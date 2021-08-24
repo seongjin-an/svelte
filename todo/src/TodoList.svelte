@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
     import Todo from './Todo.svelte'
 
     let lastId = 0;
 
-    const createTodo = (text, done = false) => ({id: ++lastId, text, done})
+    const createTodo = (text, done:boolean = false) => ({id: ++lastId, text, done})
 
     let todoText = '';
 
