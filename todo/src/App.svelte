@@ -2,15 +2,15 @@
 <script lang="ts">
 	import TodoList from './TodoList.svelte'
 	import Person from './Person.svelte'
+	import Payment from "./Payment.svelte";
 
-	export let name: string;
-	const showAge = (num:number): number => {
-		return num*2
+	export let name: string = "world";
+	const showAge = (num: number): number => {
+		return num * 2
 	}
 	const celebrate = () => {
 		console.log("happy birthday")
 	}
-
 
 
 </script>
@@ -26,7 +26,7 @@
 			onBirthday={celebrate} />
 	<h1>Hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-
+	<Payment/>
 </main>
 
 <style>
