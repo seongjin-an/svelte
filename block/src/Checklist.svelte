@@ -18,6 +18,7 @@
             return
         }
         const id = getGuid()
+        console.log(`id: ${id} / name: ${categoryName}`)
         categories[id] = {id, name: categoryName, items: {}}
         categories = categories
         categoryName = '';

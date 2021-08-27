@@ -35,7 +35,7 @@
         return(
             show === 'all' ||
             (show === 'packed' && item.packed) ||
-            (show === 'packed' && !item.packed)
+            (show === 'unpacked' && !item.packed)
         )
     }
 </script>
