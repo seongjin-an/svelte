@@ -1,18 +1,19 @@
 <script lang="ts">
-	import NavButton from "./components/NavButton.svelte";
-	import {cartStore} from "./store/cart/cartStore";
-	import Cart from './components/cart/Cart.svelte'
-	import Ship from './components/ship/Ship.svelte'
-	import Shop from './components/shop/Shop.svelte'
-	import HashrouteApp from "./HashrouteApp.svelte";
-	import PageApp from "./PageApp.svelte";
+    import NavButton from "./components/NavButton.svelte";
+    import {cartStore} from "./store/cart/cartStore";
+    import Cart from './components/cart/Cart.svelte'
+    import Ship from './components/ship/Ship.svelte'
+    import Shop from './components/shop/Shop.svelte'
+    import HashrouteApp from "./HashrouteApp.svelte";
+    import PageApp from "./PageApp.svelte";
+    import Page12 from "./Page12.svelte";
 
-	const pageMap = {
-		cart: Cart,
-		ship: Ship,
-		shop: Shop
-	}
-	let pageName = 'shop'
+    const pageMap = {
+        cart: Cart,
+        ship: Ship,
+        shop: Shop
+    }
+    let pageName = 'shop'
 </script>
 <!--<nav>-->
 <!--	<NavButton bind:pageName name='shop'>Shop</NavButton>-->
@@ -23,7 +24,8 @@
 <!--	<svelte:component this={pageMap[pageName]} />-->
 <!--</main>-->
 <!--<HashrouteApp />-->
-<PageApp />
+<!--<PageApp />-->
+<Page12 />
 <style>
 	main{
 		padding: 10px;

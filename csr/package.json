@@ -8,7 +8,6 @@
     "start": "sirv public --single",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
-
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
@@ -27,6 +26,7 @@
   },
   "dependencies": {
     "page": "^1.11.6",
+    "query-string": "^7.0.1",
     "sirv-cli": "^1.0.0"
   }
 }
