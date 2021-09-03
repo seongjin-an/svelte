@@ -1,11 +1,14 @@
-<script>
+<script lang="ts">
     import {createEventDispatcher} from 'svelte'
     const dispatch = createEventDispatcher()
     import {blurOnKey} from './util'
+    interface IItem{
+
+    }
     export let item;
     let editing = false;
 
-    export let categoryId;
+    export let categoryId: number;
     export let dnd;
 
 </script>
@@ -17,7 +20,7 @@
     {:else}
         <span class="packed-{item.packed}" on:click={()=>editing=true}>{item.name}</span>
     {/if}
-    <button class="icon" on:click={() => dispatch('delete')}>&#xF5D1</button>
+    <button class="icon" data-testid="delete" on:click={() => dispatch('delete')}>&#xF5D1</button>
 </li>
 
 <style>

@@ -3,7 +3,7 @@
 
     let lastId = 0;
 
-    const createTodo = (text, done:boolean = false) => ({id: ++lastId, text, done})
+    const createTodo = (text, done = false) => ({id: ++lastId, text, done})
 
     let todoText = '';
 
@@ -37,13 +37,13 @@
 
 <main>
     <div>
-        <h1>To Do List</h1>
+        <h1>안녕하세요 todo 리스트 입니다.</h1>
         <div>
             {status}
             <button on:click={archiveComplete}>Archive Completed</button>
         </div>
         <form on:submit|preventDefault>
-            <input size="30" placeholder="enter new todo here" bind:value={todoText}/>
+            <input data-testid="todo-input" size="30" placeholder="enter new todo here" bind:value={todoText}/>
             <button disabled={!todoText} on:click={addTodo}>Add</button>
         </form>
         <ul>
