@@ -4,6 +4,7 @@ import Todo from './Todo.svelte'
 //참고
 //npm install --save-dev jest@25.0.0 --force
 //npm i -D svelte-jester@1.8.2 --force
+
 describe('Todo', () => {
     const text = 'buy milk'
     const todo = {text}

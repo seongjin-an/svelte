@@ -1,15 +1,6 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
 
-  "include": [
-    "src/**/*",
-    "../../../Users/user/AppData/Local/JetBrains/WebStorm2021.1/javascript/typings/jest/25.2.3/node_modules/@types/jest/index.d.ts"
-  ],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
-  "compilerOptions": {
-//    "moduleResolution": "node",
-    "types": [
-      "mocha","node"
-    ],
-  }
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
 }

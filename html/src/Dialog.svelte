@@ -2,17 +2,19 @@
     import dialogPolyfill from "dialog-polyfill";
     import {createEventDispatcher, onMount} from "svelte";
 
-    export let canClose:boolean = true;
-    export let className:string = '';
+    export let canClose = true;
+    export let className = '';
     export let dialog = null;
     export let icon = undefined
-    export let title:string
+    export let title
 
     const dispatch = createEventDispatcher()
 
     $:classNames = 'dialog' + (className ? ' ' + className : '')
 
-    onMount(() => dialogPolyfill.registerDialog(dialog))
+    onMount(() => {
+        if(dialogPolyfill) dialogPolyfill.registerDialog(dialog)
+    })
 
     const close = () => {
         dispatch('close')

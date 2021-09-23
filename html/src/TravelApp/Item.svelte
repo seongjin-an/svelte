@@ -1,22 +1,18 @@
-<script lang="ts">
+<script>
     import {createEventDispatcher} from 'svelte'
-    const dispatch = createEventDispatcher()
     import {blurOnKey} from './util'
-    interface IItem{
-
-    }
     export let item;
-    let editing = false;
-
-    export let categoryId: number;
+    export let categoryId;
     export let dnd;
 
+    const dispatch = createEventDispatcher()
+    let editing = false;
 </script>
 
 <li draggable="true" on:dragstart={event => dnd.drag(event, categoryId, item.id)}>
     <input type="checkbox" bind:checked={item.packed}>
     {#if editing}
-        <input autofocus bind:value={item.name} on:blur={() => editing=false} on:keydown={blurOnKey} type="text" />
+        <input name={item.name} autofocus bind:value={item.name} on:blur={() => editing=false} on:keydown={blurOnKey} type="text" />
     {:else}
         <span class="packed-{item.packed}" on:click={()=>editing=true}>{item.name}</span>
     {/if}

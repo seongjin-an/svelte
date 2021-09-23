@@ -1,12 +1,12 @@
 module.exports = {
     testEnvironment: 'jsdom',
-    bail: false,
-    moduleFileExtensions: ['js', 'svelte'],
+    bail: false,//테스트 케이스 하나만 실패해도 제스트가 테스트를 종료하지 않게 한다.
+    moduleFileExtensions: ['js', 'svelte', 'ts'],
     transform:{
         '^.+\\.js$': 'babel-jest',
         '^.+\\.svelte$': 'svelte-jester'
     },
-    verbose: true
+    verbose: true//제스트가 전체 테스트 결과를 요약해서 보여주지 않고 각 테스트의 결과를 보여준다.
 }
 
 // module.exports = {
