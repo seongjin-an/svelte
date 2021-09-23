@@ -34,11 +34,11 @@
 
     //
     let colors = ['Red', 'Green', 'Blue']
-    let color = '';
+    let color: number = 0;
     const handleSelect = (event: MouseEvent) => {
         console.log("event:", event)
         console.log("event.detail:", event.detail)
-        // color = event.detail;
+        color = event.detail;
     }
 
 
@@ -52,20 +52,24 @@
 <button on:click={() => go = !go}>Toggle</button>
 
 <!--  바인드  -->
+<hr/>
 <label>
     Size
     <input type="number" bind:value={size}>
 </label>
 <Sum numbers="{numbers}"/>
+<hr/>
 <Bind/>
+<hr/>
 <Tally bind:this={tally} />
 <button on:click={update}>update</button>
 <div>
     Tax Rate = {(taxRate * 100).toFixed(2)}%
     Grand Total = {grandTotal.toFixed(2)}
 </div>
+<hr/>
 <Parent/>
-
+<hr/>
 <h1>Color Picker</h1>
 <ColorPicker bind:hex />
 <div class="swatch" style="background-color: {hex}">{hex}</div>
@@ -80,11 +84,11 @@
         width: 100px;
     }
 </style>
-
+<hr/>
 <div bind:clientHeight={clientH} bind:clientWidth={clientW} bind:offsetHeight={offsetH} bind:offsetWidth={offsetW}>
     How big am I?
 </div>
-
+<hr/>
 <!--  슬롯  -->
 <ShippingLabel>
     <div slot="address">
@@ -93,10 +97,10 @@
     </div>
     <div slot="name">Mark Volkmann</div>
 </ShippingLabel>
+<hr/>
 
-
-<!--  이벤트  -->
-<Buttons labels={colors} value={color} on:select={handleSelect} />
+<!--  이벤트 on:event-name  -->
+<Buttons labels={colors} value={color} on:selectButton={handleSelect} />
 {#if color}
     <div>You clicked {color}</div>
 {/if}

@@ -3,7 +3,7 @@
     $: color = on ? 'green' : 'red';
 </script>
 
-<div style="background-color: {color}">{color}</div>
+<div style="background-color: {on ? 'green' : 'red'}">{on ? 'green' : 'red'}</div>
 
 <style>
     div{

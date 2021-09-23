@@ -6,7 +6,7 @@
 </script>
 
 {#each labels as label}
-    <button class:selected={label === value} on:click={() => dispatch('select', label)}>{label}</button>
+    <button class:selected={label === value} on:click={() => dispatch('selectButton', label)}>{label}</button>
 {/each}
 <style>
     .selected{
