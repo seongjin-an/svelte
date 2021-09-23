@@ -65,6 +65,7 @@
         justify-content: space-between;
         align-items: center;
         /*background-color: var(--primary-color);*/
+        background-color: #1ea7fd;
         box-sizing: border-box;
         color: white;
         font-weight: bold;
