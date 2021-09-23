@@ -1,8 +1,5 @@
-
 <script lang="ts">
 	import TodoList from './TodoList.svelte'
-	import Person from './Person.svelte'
-	import Payment from "./Payment.svelte";
 
 	export let name: string = "world";
 	const showAge = (num: number): number => {

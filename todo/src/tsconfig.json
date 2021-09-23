@@ -1,6 +1,0 @@
-"ts-node": {
-  "moduleTypes": {
-    "jest.config.ts": "cjs"
-  },
-  "transpileOnly": true
-}
