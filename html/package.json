@@ -8,7 +8,9 @@
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "jest src",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "devDependencies": {
     "@babel/core": "^7.15.4",
@@ -19,6 +21,7 @@
     "@testing-library/svelte": "^3.0.3",
     "@tsconfig/svelte": "^2.0.0",
     "babel-test": "^0.2.4",
+    "cypress": "^8.4.1",
     "jest": "^25.0.0",
     "jsdom": "^17.0.0",
     "rollup": "^2.3.4",

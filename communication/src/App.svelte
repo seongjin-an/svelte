@@ -1,121 +1,59 @@
-<script lang="ts">
-    import StopLight from "./StopLight.svelte"
-    import Sum from "./Sum.svelte";
-    import Bind from "./Bind.svelte";
-    import Tally from "./Tally.svelte";
-    import Parent from "./Parent.svelte";
-    import ColorPicker from "./ColorPicker.svelte";
-    import ShippingLabel from "./ShippingLabel.svelte";
-    import Buttons from "./Buttons.svelte";
-    import A from "./A.svelte";
-    import Login from './Travel/Login.svelte'
-    import Checklist from './Travel/Checklist.svelte'
-
-    let go = false
-
-    //
-    let size = 3;
-    $: numbers = Array(size).fill(0).map((_, index) => index + 1)
-
-    //
-    let tally: { taxRate: number, getGrandTotal: Function };
-    let taxRate = 0, grandTotal = 0;
-
-    function update() {
-        taxRate = tally.taxRate;
-        grandTotal = tally.getGrandTotal()
-    }
-
-    //
-    let hex = '000000';
-
-    //
-    let clientH, clientW, offsetH, offsetW
-
-    //
-    let colors = ['Red', 'Green', 'Blue']
-    let color: number = 0;
-    const handleSelect = (event: MouseEvent) => {
-        console.log("event:", event)
-        console.log("event.detail:", event.detail)
-        color = event.detail;
-    }
-
-
-    let page = Login;
+<script>
+    import page from 'page'
+    import Checklist from './Packing/CheckList.svelte';
+    import CheckList2 from './Travel/Checklist.svelte'
+    import Login from './Packing/Login.svelte';
+    import Login2 from './Travel/Login.svelte'
+    import NotFound from './Packing/NotFound.svelte';
+    /*
+    const hashMap = {
+      '#login': Login,
+      '#checklist': Checklist
+    };
+    */
+    let component = Login;
+    //const hashChange = () => (component = hashMap[location.hash] || NotFound);
+    page.redirect('/', '/login');
+    page('/login', () => (component = Login2));
+    page('/checklist', () => (component = CheckList2));
+    page('*', () => (component = NotFound));
+    page.start();
 </script>
 
-<!--  프롭스  -->
-<StopLight/>
-<StopLight on/>
-<StopLight on={go}/>
-<button on:click={() => go = !go}>Toggle</button>
+<!-- <svelte:window on:hashchange={hashChange} /> -->
 
-<!--  바인드  -->
-<hr/>
-<label>
-    Size
-    <input type="number" bind:value={size}>
-</label>
-<Sum numbers="{numbers}"/>
-<hr/>
-<Bind/>
-<hr/>
-<Tally bind:this={tally} />
-<button on:click={update}>update</button>
-<div>
-    Tax Rate = {(taxRate * 100).toFixed(2)}%
-    Grand Total = {grandTotal.toFixed(2)}
-</div>
-<hr/>
-<Parent/>
-<hr/>
-<h1>Color Picker</h1>
-<ColorPicker bind:hex />
-<div class="swatch" style="background-color: {hex}">{hex}</div>
-<input type="color" bind:value={hex}>
+<main>
+    <h1 class="hero">Travel Packing Checklist</h1>
+
+    <!-- <svelte:component
+      this={component}
+      on:login={() => (location.href = '/#checklist')}
+      on:logout={() => (location.href = '/#login')} /> -->
+
+    <svelte:component
+            this={component}
+            on:login={() => page.show('/checklist')}
+            on:logout={() => page.show('/login')} />
+</main>
+
 <style>
-    .swatch{
+    .hero {
+        --height: 7rem;
+        /*background-color: var(--heading-bg-color);*/
         color: white;
-        display: inline-block;
-        height: 100px;
-        line-height: 100px;
+        font-size: 4rem;
+        height: var(--height);
+        line-height: var(--height);
+        margin: 0 0 3rem 0;
         text-align: center;
-        width: 100px;
+        vertical-align: middle;
+        width: 100vw;
+    }
+    main {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
     }
 </style>
-<hr/>
-<div bind:clientHeight={clientH} bind:clientWidth={clientW} bind:offsetHeight={offsetH} bind:offsetWidth={offsetW}>
-    How big am I?
-</div>
-<hr/>
-<!--  슬롯  -->
-<ShippingLabel>
-    <div slot="address">
-        123 Some Street,<br/>
-        Somewhere, Some State 12345
-    </div>
-    <div slot="name">Mark Volkmann</div>
-</ShippingLabel>
-<hr/>
-
-<!--  이벤트 on:event-name  -->
-<Buttons labels={colors} value={color} on:selectButton={handleSelect} />
-{#if color}
-    <div>You clicked {color}</div>
-{/if}
-
-
-<A/>
-
-{#if page === Login}
-    <script>
-        console.log("page is login")
-    </script>
-    <Login on:login={() => (page = Checklist)} />
-{:else}
-    <script>
-        console.log("page is not login")
-    </script>
-    <Checklist on:logout={() => (page = Login)} />
-{/if}

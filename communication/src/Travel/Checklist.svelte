@@ -53,9 +53,9 @@
 <section>
     <header>
         <form on:submit|preventDefault={addCategory}>
-            <label>
+            <label data-testid="category-name-label">
                 New Category
-                <input bind:value={categoryName}>
+                <input data-testid="category-name-input" required bind:value={categoryName}>
             </label>
             <button disabled={!categoryName}>Add Category</button>
             <button class="logout-btn" on:click={() => dispatch('logout')}>Log Out</button>

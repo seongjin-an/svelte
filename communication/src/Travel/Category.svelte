@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import {createEventDispatcher} from 'svelte'
     import Item from './Item.svelte'
     import {getGuid, blurOnKey, sortOnName} from "./util";
@@ -15,7 +15,7 @@
 
     $: items = Object.values(category.items);
     $: remaining = items.filter(item => !item.packed).length;
-    $: total = items.lenght;
+    $: total = items.length;
     $: status = `${remaining} of ${total} remaining`
     $: itemsToShow = sortOnName(items.filter(i => shouldShow(show, i)));
 
@@ -49,7 +49,7 @@
 </script>
 
 <section>
-    <h3>
+    <h2>
         {#if editing}
             <input bind:value={category.name} on:blur={()=>(editing=false)} on:keypress={blurOnKey} />
         {:else}
@@ -57,11 +57,11 @@
         {/if}
         <span class="status">{status}</span>
         <button class="icon" on:click={() => dispatch('delete')}>&#x1F5D1</button>
-    </h3>
+    </h2>
     <form on:submit|preventDefault={addItem}>
         <label>
             New Item
-            <input bind:value={itemName}>
+            <input data-testid="item-input" required bind:value={itemName}>
         </label>
         <button disabled={!itemName}>Add Item</button>
     </form>
