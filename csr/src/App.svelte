@@ -15,17 +15,17 @@
     }
     let pageName = 'shop'
 </script>
-<!--<nav>-->
-<!--	<NavButton bind:pageName name='shop'>Shop</NavButton>-->
-<!--	<NavButton bind:pageName name="cart">&#x1F6D2; {$cartStore.length}</NavButton>-->
-<!--	<NavButton bind:pageName name="ship">Ship</NavButton>-->
-<!--</nav>-->
-<!--<main>-->
-<!--	<svelte:component this={pageMap[pageName]} />-->
-<!--</main>-->
+<nav>
+	<NavButton bind:pageName name='shop'>Shop</NavButton>
+	<NavButton bind:pageName name="cart">&#x1F6D2; {$cartStore.length}</NavButton>
+	<NavButton bind:pageName name="ship">Ship</NavButton>
+</nav>
+<main>
+	<svelte:component this={pageMap[pageName]} />
+</main>
 <!--<HashrouteApp />-->
 <!--<PageApp />-->
-<Page12 />
+<!--<Page12 />-->
 <style>
 	main{
 		padding: 10px;
